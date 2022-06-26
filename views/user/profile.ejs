@@ -1,0 +1,145 @@
+<%- include('../partials/header.ejs')%>
+
+    <div class="container-fluid container m-4">
+        <div class="card mb-3" >
+            <h2>Welcome, <%=user.firstName%></h2>
+        </div>
+    </div>
+    
+    <div class="container-fluid container m-4">
+        <% if(equipments.length) { %>
+            <div class="card mb-3" >
+                <h5><b> You have traded the following equipments </b></h5>
+            
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Equipment</th>
+                  <th scope="col">Sport</th>
+                  <th scope="col">Status</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% equipments.forEach(equipment => { %>
+                    <tr>
+                      <td scope="row"><a href="/exchange/<%=equipment.id%>"><%=equipment.name%> </a></td>
+                      <td><%=equipment.category%></td>
+                      <td><%=equipment.status%></td>
+                      <td>
+                        <form method="GET" action="/exchange/<%=equipment.id %>/edit">
+                            <button class="btn btn-primary mb-2">Edit</button>
+                        </form>
+
+                        <form method="POST" action="/exchange/<%=equipment.id %>?_method=DELETE">
+                            <button class="btn btn-danger mb-2">Delete</button>
+                        </form>
+                        
+                        
+                        
+                        <% exchangeEquipments.forEach((exp)=>{ %>
+                        
+                           <% if(JSON.stringify(exp._id) === JSON.stringify(equipment.exchanges)){ %>
+                              <form action="/users/exchange/<%=exp._id %>" method="POST">
+                                <button class="btn btn-success mb-2">Manage Offer</button>
+                              </form>
+                            <% }%>
+                      <%});%>
+                        
+                      </td>
+                    </tr>
+                <% }); %>
+                
+              </tbody>
+            </table>
+            </div>
+        <%}else{%>
+            <div class="card mb-3" >
+                <p>You have not traded any equipments</p>
+            </div>
+        <%}%>
+    </div>
+
+
+    <div class="container-fluid container m-4">
+        <% if(watchEquipments.length) { %>
+            <div class="card mb-3" >
+                <h5><b> You have watched the following equipments</b></h5>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Equipment</th>
+                      <th scope="col">Sport</th>
+                      <th scope="col">Status</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% watchEquipments.forEach(equipment => { %>
+                        <tr>
+                          <td scope="row"><a href="/exchange/<%=equipment.id%>"><%=equipment.name%></td>
+                          <td><%=equipment.category%></td>
+                          <td><%=equipment.status%></td>
+                          <td>
+                            <form action="/exchange/<%= equipment.id%>" method="POST">
+                              <button class="btn btn-primary">Unwatch</button>
+                            </form>
+                          </td>
+                        </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+            </div>
+        <%}%>
+    </div>
+
+
+    <% let yourExchangeEquipments = new Array();
+        if(exchangeEquipments.length) {
+          exchangeEquipments.forEach(exEq => {
+            console.log("user._id: " + typeof user._id);
+            console.log("exEq.owner._id: " + typeof exEq.owner._id);
+
+            if(JSON.stringify(user._id) === JSON.stringify(exEq.owner._id)){
+              console.log("same");
+              yourExchangeEquipments.push(exEq);
+            }
+          });
+
+    } %>
+
+    <div class="container-fluid container m-4">
+            <% if(yourExchangeEquipments.length) { %>
+                <div class="card mb-3" >
+                    <h5><b> You have started exchanges on the following equipments</b></h5>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Equipment</th>
+                          <th scope="col">Sport</th>
+                          <th scope="col">Status</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% yourExchangeEquipments.forEach(exEq => { %>
+                          <tr>
+                            <td><a href="/exchange/<%=exEq.equipment2.id%>"><%=exEq.equipment2.name%></td>
+                            <td><%=exEq.equipment2.category%></td>
+                            <td><%=exEq.equipment2.status%></td>
+                            <td>
+                              <form action="/users/exchange/reject/<%=exEq._id %>" method="POST">
+                                <button class="btn btn-danger">Cancel offer</button>
+                              </form>
+                            </td>    
+                          </tr>
+                        <% }); %>
+                      </tbody>
+                    </table>
+                </div>
+            <%} %>
+    </div> 
+    
+    
+
+<%- include('../partials/footer.ejs')%>

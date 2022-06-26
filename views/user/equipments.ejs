@@ -1,0 +1,39 @@
+<%- include('../partials/header.ejs')%>
+
+	<div class="container-fluid container m-4">
+	    <% if(equipments.length) { %>
+	        <div class="card mb-3" >
+	            <p> Select a equipment to complete trade <p>
+	            <form method="POST" action="/users/profile">
+	            	<table class="table">
+		            	<thead>
+			            	<tr>
+			            		<th scope="col"></th>
+			            		<th scope="col">Equipment</th>
+			            	    <th scope="col">Sport</th>
+			            	    <th scope="col">Status</th>
+			            	</tr>
+		            	</thead>
+		            	<tbody>
+		            		<% equipments.forEach(equipment => {
+		            			if(equipment.status == 'Available'){ %>
+		            				<tr>
+		            					<td>
+		            						<input class="form-check-input" type="radio" name="equipment1_id" id="<%=equipment.id %>" value="<%=equipment.id %>">
+		            					</td>
+		            					<td><%=equipment.name%></td>
+		            					<td><%=equipment.category%></td>
+		            					<td><%=equipment.status%></td>
+		            				</tr>
+		            				
+		            		<%	}%>
+		            		<% }); %>
+		            	</tbody>
+		            </table>
+		            <button type="submit" class="btn btn-primary mb-3">Exchange</button>
+		            <input class="form-check-input" type="hidden" name="equipment2_id" id="<%=equipment2_id %>" value="<%=equipment2_id %>">
+	            </form>
+	        </div>
+	    <%}%>
+	</div>
+<%- include('../partials/footer.ejs')%>

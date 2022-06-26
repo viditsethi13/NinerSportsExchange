@@ -1,0 +1,101 @@
+body {
+	background-color: grey !important;
+}
+
+#header, #footer{
+	background-color: white;
+}
+
+.nav-pills .nav-link{
+	font-size: larger;
+	font-family: cursive;
+}
+
+.navbar-brand{
+	font-size: unset;
+	font-family: cursive;
+}
+
+.text-green{
+	color: green;
+	font-family: cursive;
+}
+
+#heading{
+	font-weight: bolder;
+	color: green;
+	font-family: Georgia, serif;
+}
+
+#text-blue{
+	color: blue;
+}
+
+#footer{
+	font-family: cursive;
+}
+
+.footer-img{
+	width:25%;
+}
+
+#carousel{
+	background-color: white;
+}
+
+.text-carousel-blue{
+	color: blue;
+	font-family: cursive;
+}
+
+.text-carousel-green{
+	color: green;
+	font-family: cursive;
+	font-weight: bolder;
+}
+
+#form{
+	background-color: white;
+}
+.btn{
+	font-family: cursive;
+}
+
+#text-title-green{
+	color: green;
+	font-family: cursive;
+	font-weight: bolder;
+}
+
+/*.card{
+	width: 30rem;
+}*/
+
+.card-img-top{
+	height: 20rem;
+}
+
+.card-text{
+	color: blue;
+	font-family: cursive;
+}
+
+.card-body a{
+	text-decoration: none;
+}
+
+.success {
+  background: rgba(108, 192, 112, 0.7);
+  color: #fff;
+  width: 70%;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.error {
+  background: rgba(255, 102, 51, 0.7);
+  color: #fff;
+  width: 70%;
+  text-align: center;
+  padding: 10px 10px;
+}

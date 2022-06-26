@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<meta charset="UTF-8">
+		<TITLE>
+			Niner Sports Exchange
+		</TITLE>
+		<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
+		<script type="text/javascript" src ="/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<link href="/css/commonStyle.css" rel="stylesheet" type="text/css">
+		<link rel="icon" href="/images/header/logo.jfif" type ="image/x-icon">
+
+	</head>
+	
+	
+	<BODY>
+		<div class="container-fluid" id="header">
+			<header class="d-flex flex-wrap sticky-top justify-content-center py-3 mb-1 border-bottom">
+			      	<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+			        	<img src="/images/header/logo.jfif" alt="" width="30" height="24" class="">
+			        	<span class="fs-4 ms-3" id="heading">Niner Sports Exchange</span>
+			      	</a>
+
+			      	<ul class="nav nav-pills">
+			        	<li class="nav-item"><a href="/exchange/new" class="nav-link">Start Exchange</a></li>
+			        	<% if(!user){%>
+			        	    <li class="nav-item"><a href='/users/new' class="nav-link">Sign Up</a></li>
+			        	    <li class="nav-item"><a href='/users/login' class="nav-link">Login</a></li>
+			        	<%}
+			        	else{%>
+			        		<!-- <li class="nav-item"> <%= user.firstName %></li> -->
+			        		<li class="nav-item"><a href="/users/profile" class="nav-link">Profile</a></li>
+			        		<li class="nav-item"><a href="/users/logout" class="nav-link">Logout</a></li>
+			        	<%}%>	        
+			      	</ul>
+			</header>
+			<nav class="nav border-bottom">
+			  		<a class="navbar-brand" href="/exchange">Exchange</a>
+			</nav>
+		</div>
+
+		<% if(errorMessages.length > 0) {%>
+		    <% errorMessages.forEach(message=>{%>
+		    	<div class="card mb-3 error">
+		    	    <%=message%>
+		    	</div>
+		    <%});%>
+		<%}%>
+		
+        <% if(successMessages.length > 0) {%>
+            <% successMessages.forEach(message=>{%>
+                <div class="card mb-3 success">
+		    	    <%=message%>
+		    	</div>
+            <%});%>
+        <%}%>

@@ -1,0 +1,42 @@
+<%- include('../partials/header.ejs')%>
+	
+	<div class="container-fluid container m-4">
+	        <div class="card mb-3" >
+	            <p> You have watched the following equipments</p>
+	            <table class="table">
+	              <thead>
+	                <tr>
+	                  <th scope="col"></th>
+	                  <th scope="col"></th>
+	                  <th scope="col"></th>
+	                </tr>
+	              </thead>
+	              <tbody>
+                    <tr>
+                      <td scope="row"><%=equipment1.category%><br><%=equipment1.name%> </td>
+                      <td scope="row"><%=equipment2.category%><br><%=equipment2.name%> </td>
+
+                      <% if(owner._id.toString() == current_user.toString()){ %>
+                      	<td>
+                      		<form action="/users/exchange/reject/<%=trade_id %>" method="POST">
+                      	  		<button class="btn btn-danger">Cancel offer</button>
+                      		</form>
+                      	</td>
+                      <% }
+                      else{ %>
+                      	<td>
+                      		<form action="/users/exchange/accept/<%=trade_id %>" method="POST">
+                      	  		<button class="btn btn-success">Accept</button>
+                      		</form>
+                      		<form action="/users/exchange/reject/<%=trade_id %>" method="POST">
+                      	  		<button class="btn btn-danger">Reject</button>
+                      		</form>
+                      	</td>
+                      <% } %>
+                    </tr>
+	              </tbody>
+	            </table>
+	        </div>
+	</div>
+
+<%- include('../partials/footer.ejs')%>

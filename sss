@@ -1,0 +1,98 @@
+let equipment1_id = req.body.equipment1_id;
+    let equipment2_id = req.body.equipment2_id;
+    let id = req.session.user;
+    
+    let newExchange = new Exchange({equipment1:equipment1_id, equipment2:equipment2_id, owner:id});
+    newExchange.save()
+    .then((exchange)=>{
+        if(exchange){
+            // console.log("Exchange "+ exchange);
+            let trade_id = exchange._id;
+            Equipments.findById(equipment1_id)
+            .then((equipment1)=>{
+                // console.log("equipment1 "+ equipment1);
+                if(equipment1){
+                    equipment1.status = "Pending";
+                    equipment1.exchanges = trade_id;
+                    equipment1.save();
+                    Equipments.findById(equipment2_id)
+                    .then((equipment2)=>{
+                        // console.log("equipment2 "+ equipment2);
+                        if(equipment2){
+                            equipment2.status = "Pending";
+                            equipment2.exchanges = trade_id;
+                            equipment2.save();
+                            console.log("....Save....")
+                            Promise.all([model.findById(id).populate('watchEquipments'),Equipments.find({owner:id})]) 
+                                .then((results)=>{
+                                    const [user,equipments] = results;
+                                    const watchEquipments = user.watchEquipments;
+                                    let exchangeEquipments=new Array();
+                                    let exchangeableEquipments=new Array();
+                                            equipments.forEach(equipment=>{
+                                                if(equipment.exchanges!=null ){
+                                                    exchangeableEquipments.push(equipment.exchanges);
+                                                }
+                                            });
+
+                                            let exchEquipments = new Array();
+                                            exchangeableEquipments.forEach(equipment=>{
+                                                var f1 = Exchange.findById(equipment).populate('equipment1').populate('equipment2').populate('owner')
+                                                exchEquipments.push(f1);
+                                            });
+                                            Promise.all(exchEquipments)
+                                            .then((result)=>{
+                                                
+                                                result.forEach(rr=>{
+                                                    if(rr){
+
+                                                        exchangeEquipments.push(rr);
+                                                    }
+                                                });
+                                                res.render('./user/profile', {user,equipments,watchEquipments,exchangeEquipments});
+                                            })
+                                            .catch(err=>next(err));
+                                    
+                                })
+                                .catch(err=>next(err));
+                        }
+                        else{
+                            //equipment2 not found
+                        }
+                    })
+                    .catch(err=>next(err));
+                }
+                else{
+                    //equipment1 not found
+                }
+                
+            })
+            .catch(err=>next(err));
+        }
+        else{
+            //exchange not created
+        }
+        
+    })
+    .catch(err=>next(err));
+
+
+
+
+
+
+    Equipments.findById(equipment1_id)
+        .then((equipment1)=>{
+            if(equipment1){
+                equipment1.status = "Available";
+                equipment1.exchanges = null;
+                equipment1.save();
+                 Equipments.findById(equipment2_id)
+                .then((equipment2)=>{
+                    equipment2.status = "Available";
+                    equipment2.exchanges = null;
+                    equipment2.save();
+                })
+                .catch(err=>next(err));
+            }
+        })

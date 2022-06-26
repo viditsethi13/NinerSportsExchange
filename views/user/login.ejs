@@ -1,0 +1,19 @@
+<%- include('../partials/header.ejs')%>
+    <div class="container-fluid container m-4">
+        <form class="rounded" id="form" method="POST" action="/users/login">
+
+            <div class="form-group m-3">
+                <label class="m-1 text-green"><b>Email Address</b></label>
+                <input type="email" class="form-control fst-italic" id="email" name="email" placeholder="Enter Email" required>
+            </div>
+            <div class="form-group m-3">
+                <label class="m-1 text-green"><b>Password</b></label>
+                <input type="password" class="form-control fst-italic" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <button type="submit" class="btn btn-success m-3"><b>Login</b></button>
+
+        </form>
+    </div>
+<%- include('../partials/footer.ejs')%>
+
+

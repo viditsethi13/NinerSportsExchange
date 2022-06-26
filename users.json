@@ -1,0 +1,23 @@
+[{
+  "_id": {
+    "$oid": "6279ec516a50d476a47cf741"
+  },
+  "firstName": "Vidit",
+  "lastName": "Sethi",
+  "email": "v@s.com",
+  "password": "$2b$10$dQjzV6rLYQoST1Z7AV0jq.nQjD2CY.n7KET1Sr2SihvSLnOBk2Y3a",
+  "watchEquipments": [],
+  "exchangeEquipments": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6279ecbd6a50d476a47cf74f"
+  },
+  "firstName": "Nishit",
+  "lastName": "Sethi",
+  "email": "n@s.com",
+  "password": "$2b$10$CuvuKBKg8EuWw6tRf7RFFOvCINeMhdHM8XqTYK9u5b1g.UsBXmTT2",
+  "watchEquipments": [],
+  "exchangeEquipments": [],
+  "__v": 0
+}]

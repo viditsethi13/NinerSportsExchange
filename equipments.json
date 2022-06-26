@@ -1,0 +1,115 @@
+[{
+  "_id": {
+    "$oid": "6279ec8d6a50d476a47cf747"
+  },
+  "name": "Bat",
+  "category": "Cricket",
+  "content": "BDM English Willow",
+  "owner": {
+    "$oid": "6279ec516a50d476a47cf741"
+  },
+  "status": "Available",
+  "exchanges": null,
+  "createdAt": {
+    "$date": "2022-05-10T04:39:41.399Z"
+  },
+  "updatedAt": {
+    "$date": "2022-05-10T04:39:41.399Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6279eca86a50d476a47cf74a"
+  },
+  "name": "Pads",
+  "category": "Cricket",
+  "content": "SS white small size pads",
+  "owner": {
+    "$oid": "6279ec516a50d476a47cf741"
+  },
+  "status": "Available",
+  "exchanges": null,
+  "createdAt": {
+    "$date": "2022-05-10T04:40:08.665Z"
+  },
+  "updatedAt": {
+    "$date": "2022-05-10T04:40:08.665Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6279ece16a50d476a47cf754"
+  },
+  "name": "Shuttle",
+  "category": "Badminton",
+  "content": "Yonex yellow plastic",
+  "owner": {
+    "$oid": "6279ecbd6a50d476a47cf74f"
+  },
+  "status": "Available",
+  "exchanges": null,
+  "createdAt": {
+    "$date": "2022-05-10T04:41:05.169Z"
+  },
+  "updatedAt": {
+    "$date": "2022-05-10T04:41:05.169Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6279ed096a50d476a47cf757"
+  },
+  "name": "Raquet",
+  "category": "Badminton",
+  "content": "Yonex carbonex 7000",
+  "owner": {
+    "$oid": "6279ecbd6a50d476a47cf74f"
+  },
+  "status": "Available",
+  "exchanges": null,
+  "createdAt": {
+    "$date": "2022-05-10T04:41:45.241Z"
+  },
+  "updatedAt": {
+    "$date": "2022-05-10T04:41:45.241Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6279f1436a50d476a47cf760"
+  },
+  "name": "Net",
+  "category": "Badminton",
+  "content": "Vixen brown net",
+  "owner": {
+    "$oid": "6279ec516a50d476a47cf741"
+  },
+  "status": "Available",
+  "exchanges": null,
+  "createdAt": {
+    "$date": "2022-05-10T04:59:47.057Z"
+  },
+  "updatedAt": {
+    "$date": "2022-05-10T04:59:47.057Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6279f16f6a50d476a47cf768"
+  },
+  "name": "Gloves",
+  "category": "Cricket",
+  "content": "Right-handed gloves",
+  "owner": {
+    "$oid": "6279ecbd6a50d476a47cf74f"
+  },
+  "status": "Available",
+  "exchanges": null,
+  "createdAt": {
+    "$date": "2022-05-10T05:00:31.467Z"
+  },
+  "updatedAt": {
+    "$date": "2022-05-10T05:00:31.467Z"
+  },
+  "__v": 0
+}]

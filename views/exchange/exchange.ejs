@@ -1,0 +1,67 @@
+<%- include('../partials/header.ejs')%>
+	<div class="container-fluid container m-5 row">
+		<div class="col-3">
+		</div>
+		<div class="card col-6" >
+		  <img src="<%= equipment.image %><%=equipment.id%>.jpg" class="card-img-top rounded shadow mt-3" alt="...">
+		  <div class="card-body">
+		    <h5 class="card-title" id="text-title-green"><%= equipment.name %></h5>
+		    <p class="card-text" id="text-card-blue"><%= equipment.content %></p>
+		  </div>
+
+		  	<%if(user == equipment.owner._id){%>
+			  <div class="card-body justify-content-center">
+			  	<div class="justify-content-center">
+
+			  		<form method="GET" action="/exchange/<%=equipment.id %>/edit">
+			  			<button class="btn btn-primary mb-2">Edit</button>
+			  		</form>
+
+			  		<form method="POST" action="/exchange/<%=equipment.id %>?_method=DELETE">
+			  			<button class="btn btn-danger mb-2">Delete</button>
+			  		</form>
+					
+				</div>
+			  </div>
+		  	<%}%>
+		  	<% console.log("user: " + user) %>
+			<% console.log("us: " + us) %>
+			<% let watch = false; %>
+			<%if(us){
+				us.watchEquipments.forEach(eqEp=>{
+					if(JSON.stringify(eqEp) === JSON.stringify(equipment.id)){
+						console.log("watched");
+						watch=true;
+					}
+				});
+			}%>
+		  	<div class="card-body justify-content-center">
+			  	<div class="justify-content-center">
+
+			  		<%if(user != equipment.owner._id){%>
+			  			
+			  			<%if(watch){%>
+  				  			<form action="/exchange/<%= equipment.id%>" method="POST">
+  				  				<button class="btn btn-primary">Unwatch</button>
+  							</form>
+			  			<%}
+			  			else{%>
+			  				<form action="/exchange/<%= equipment.id%>" method="POST">
+		  	  					<button class="btn btn-primary">Watch</button>
+		  					</form>
+			  			<%}%>
+		  			<%}%>
+		  			<%if(user != equipment.owner._id && equipment.status == 'Available'){%>
+		  				<form action="/exchange/equipments/<%= equipment.id%>">
+		  					<button class="btn btn-success mb-2">Exchange</button>
+		  				</form>
+		  			<%}%>
+		  		</div>
+		  	</div>
+
+		</div>
+
+		<div class="col-3">
+		</div>
+	</div>
+<%- include('../partials/footer.ejs')%>

@@ -1,0 +1,12 @@
+<%- include('./partials/header.ejs') %>
+	<div class="container-fluid container m-4">
+		<div class="card mb-3">
+		  <div class="card-header text-green">
+		    <b><%= error.status %> Error</b>
+		  </div>
+		  <div class="card-body">
+		  		<p class="card-text mb-0"> <%= error.message %></p>
+		  </div>
+		</div>
+	</div>
+<%- include('./partials/footer.ejs') %>

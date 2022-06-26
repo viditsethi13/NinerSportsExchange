@@ -1,0 +1,32 @@
+<%- include('../partials/header.ejs')%>
+
+
+	<% let set = new Set(); %>
+	<% if(equipments.length){ %>
+		<% equipments.forEach(equipment => { %>	
+			<% set.add(equipment.category); %>
+		<% }); %>
+		<% set = Array.from(set); %>
+
+		<% set.forEach(value=> { %>
+			<div class="container-fluid container m-4">
+				<div class="card mb-3" >
+				  <div class="card-header text-green">
+				    <b><%= value %></b>
+				  </div>
+				  <div class="card-body">
+				  	<% equipments.forEach(equipment => { %>
+				  		<% if(equipment.category === value){ %>
+				  			<a href="/exchange/<%= equipment.id %>"><p class="card-text mb-0"> <%= equipment.name %> </p></a>
+				  		<% } %>
+				  	<% }); %>
+				  </div>
+				</div>
+			</div>
+
+		<% }); %>
+
+	<% }else{  %>
+		<p> No Equipment to Display</p>
+	<% } %>
+<%- include('../partials/footer.ejs')%>
