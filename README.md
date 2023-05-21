@@ -1,6 +1,16 @@
 <h1> NinerSportsExchange </h1>
-
+  The NinerSportsExchange aims to create a platform for users to exchange sports equipment. Users can list their items for exchange and interact with other users to accept or reject exchange requests. In addition to the main exchange functionality, the project includes features specifically designed for a watch device. These features include user notifications for real-time updates, exchange reminders, item tracking with GPS, activity tracking for fitness monitoring, social media integration, and customizable watch faces. It leverages Node.js and its ecosystem to build a robust and interactive platform for sports equipment exchange, enhancing the user experience through the watch device.
 <h2> Installation </h2>
+  <ul>
+    <li> Clone the Git repository by running the following command: </li>
+        git clone https://github.com/viditsethi13/NinerSportsExchange.git
+    <li> Once the repository is cloned, navigate into the project directory: </li>
+        cd NinerSportsExchange
+    <li> run the following command to install the dependencies: </li>
+        npm install
+    <li> Use the following command to run the project: </li>
+        nodemon app.js
+  </ul>
 
 <h2> Screenshots </h2>
   Login
@@ -23,9 +33,6 @@
   <img src="Screenshots/Exchange_Details.jpg" width=1000/>
   Manage_Offer
   <img src="Screenshots/Manage_Offer.jpg" width=1000/>
-
-
-<h2> Usage </h2>
 
 <h2> Architecture </h2>
   <p> This Node.js project follows the Model-View-Controller (MVC) architectural pattern. The components are organized as follows:</p>
